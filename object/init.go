@@ -308,7 +308,7 @@ func initWebAuthn() {
 }
 
 func initBuiltInUserModel() {
-	model, err := GetModel("Jaftt/user-model-Jaftt")
+	model, err := GetModel("built-in/user-model-built-in")
 	if err != nil {
 		panic(err)
 	}
@@ -403,7 +403,7 @@ func initBuiltInPermission() {
 		CreatedTime:  util.GetCurrentTime(),
 		DisplayName:  "Jaftt Permission",
 		Description:  "Jaftt Permission",
-		Users:        []string{"Jaftt/*"},
+		Users:        []string{"built-in/*"},
 		Groups:       []string{},
 		Roles:        []string{},
 		Domains:      []string{},
