@@ -95,15 +95,16 @@ func initBuiltInOrganization() bool {
 		Owner:              "admin",
 		Name:               "built-in",
 		CreatedTime:        util.GetCurrentTime(),
-		DisplayName:        "Built-in Organization",
-		WebsiteUrl:         "https://example.com",
+		DisplayName:        "Jaftt Organization",
+		WebsiteUrl:         "https://www.jaftt.com",
 		Favicon:            fmt.Sprintf("%s/img/casbin/favicon.ico", conf.GetConfigString("staticBaseUrl")),
-		PasswordType:       "plain",
-		PasswordOptions:    []string{"AtLeast6"},
-		CountryCodes:       []string{"US", "ES", "FR", "DE", "GB", "CN", "JP", "KR", "VN", "ID", "SG", "IN"},
+		PasswordType:       "bcrypt",
+		PasswordSalt:       "V35Xx8MhKGvGd4",
+		PasswordOptions:    []string{"Aa123", "SpecialChar"},
+		CountryCodes:       []string{"CN"},
 		DefaultAvatar:      fmt.Sprintf("%s/img/casbin.svg", conf.GetConfigString("staticBaseUrl")),
 		Tags:               []string{},
-		Languages:          []string{"en", "zh", "es", "fr", "de", "id", "ja", "ko", "ru", "vi", "pt"},
+		Languages:          []string{"en", "zh"},
 		InitScore:          2000,
 		AccountItems:       getBuiltInAccountItems(),
 		EnableSoftDeletion: false,
@@ -132,15 +133,15 @@ func initBuiltInUser() {
 		CreatedTime:       util.GetCurrentTime(),
 		Id:                util.GenerateId(),
 		Type:              "normal-user",
-		Password:          "123",
-		DisplayName:       "Admin",
+		Password:          "Chenlining.",
+		DisplayName:       "Janyd",
 		Avatar:            fmt.Sprintf("%s/img/casbin.svg", conf.GetConfigString("staticBaseUrl")),
-		Email:             "admin@example.com",
+		Email:             "a31397712@163.com",
 		Phone:             "12345678910",
-		CountryCode:       "US",
+		CountryCode:       "CN",
 		Address:           []string{},
-		Affiliation:       "Example Inc.",
-		Tag:               "staff",
+		Affiliation:       "",
+		Tag:               "admin",
 		Score:             2000,
 		Ranking:           1,
 		IsAdmin:           true,
@@ -170,19 +171,18 @@ func initBuiltInApplication() {
 		Owner:          "admin",
 		Name:           "app-built-in",
 		CreatedTime:    util.GetCurrentTime(),
-		DisplayName:    "Casdoor",
+		DisplayName:    "Jaftt",
 		Logo:           fmt.Sprintf("%s/img/casdoor-logo_1185x256.png", conf.GetConfigString("staticBaseUrl")),
-		HomepageUrl:    "https://casdoor.org",
+		HomepageUrl:    "https://www.jaftt.com",
 		Organization:   "built-in",
 		Cert:           "cert-built-in",
 		EnablePassword: true,
-		EnableSignUp:   true,
+		EnableSignUp:   false,
 		Providers: []*ProviderItem{
 			{Name: "provider_captcha_default", CanSignUp: false, CanSignIn: false, CanUnlink: false, Prompted: false, SignupGroup: "", Rule: "None", Provider: nil},
 		},
 		SigninMethods: []*SigninMethod{
 			{Name: "Password", DisplayName: "Password", Rule: "None"},
-			{Name: "Verification code", DisplayName: "Verification code", Rule: "All"},
 			{Name: "WebAuthn", DisplayName: "WebAuthn", Rule: "None"},
 		},
 		SignupItems: []*SignupItem{
@@ -236,7 +236,7 @@ func initBuiltInCert() {
 		Owner:           "admin",
 		Name:            "cert-built-in",
 		CreatedTime:     util.GetCurrentTime(),
-		DisplayName:     "Built-in Cert",
+		DisplayName:     "Jaftt Cert",
 		Scope:           "JWT",
 		Type:            "x509",
 		CryptoAlgorithm: "RS256",
@@ -252,31 +252,31 @@ func initBuiltInCert() {
 }
 
 func initBuiltInLdap() {
-	ldap, err := GetLdap("ldap-built-in")
-	if err != nil {
-		panic(err)
-	}
-
-	if ldap != nil {
-		return
-	}
-
-	ldap = &Ldap{
-		Id:         "ldap-built-in",
-		Owner:      "built-in",
-		ServerName: "BuildIn LDAP Server",
-		Host:       "example.com",
-		Port:       389,
-		Username:   "cn=buildin,dc=example,dc=com",
-		Password:   "123",
-		BaseDn:     "ou=BuildIn,dc=example,dc=com",
-		AutoSync:   0,
-		LastSync:   "",
-	}
-	_, err = AddLdap(ldap)
-	if err != nil {
-		panic(err)
-	}
+	//ldap, err := GetLdap("ldap-built-in")
+	//if err != nil {
+	//	panic(err)
+	//}
+	//
+	//if ldap != nil {
+	//	return
+	//}
+	//
+	//ldap = &Ldap{
+	//	Id:         "ldap-built-in",
+	//	Owner:      "built-in",
+	//	ServerName: "BuildIn LDAP Server",
+	//	Host:       "example.com",
+	//	Port:       389,
+	//	Username:   "cn=buildin,dc=example,dc=com",
+	//	Password:   "123",
+	//	BaseDn:     "ou=BuildIn,dc=example,dc=com",
+	//	AutoSync:   0,
+	//	LastSync:   "",
+	//}
+	//_, err = AddLdap(ldap)
+	//if err != nil {
+	//	panic(err)
+	//}
 }
 
 func initBuiltInProvider() {
@@ -308,7 +308,7 @@ func initWebAuthn() {
 }
 
 func initBuiltInUserModel() {
-	model, err := GetModel("built-in/user-model-built-in")
+	model, err := GetModel("Jaftt/user-model-Jaftt")
 	if err != nil {
 		panic(err)
 	}
@@ -401,9 +401,9 @@ func initBuiltInPermission() {
 		Owner:        "built-in",
 		Name:         "permission-built-in",
 		CreatedTime:  util.GetCurrentTime(),
-		DisplayName:  "Built-in Permission",
-		Description:  "Built-in Permission",
-		Users:        []string{"built-in/*"},
+		DisplayName:  "Jaftt Permission",
+		Description:  "Jaftt Permission",
+		Users:        []string{"Jaftt/*"},
 		Groups:       []string{},
 		Roles:        []string{},
 		Domains:      []string{},
