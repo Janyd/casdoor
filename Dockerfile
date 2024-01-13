@@ -1,7 +1,7 @@
 FROM node:18.19.0 AS FRONT
 WORKDIR /web
 COPY ./web .
-RUN yarn install --frozen-lockfile --network-timeout 1000000 && yarn run build
+RUN yarn install --frozen-lockfile --network-timeout 1000000 --registry=https://registry.npm.taobao.org/  && yarn run build
 
 
 FROM golang:1.20.12 AS BACK
