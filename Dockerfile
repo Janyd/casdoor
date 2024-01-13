@@ -14,10 +14,10 @@ FROM alpine:latest AS STANDARD
 LABEL MAINTAINER="https://casdoor.org/"
 ARG USER=casdoor
 
-RUN sed -i 's/https/http/' /etc/apk/repositories
-RUN apk add --update sudo
-RUN apk add curl
-RUN apk add ca-certificates && update-ca-certificates
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/c \
+ && apk add --update sudo \
+ && apk add curl \
+ && RUN apk add ca-certificates && update-ca-certificates
 
 RUN adduser -D $USER -u 1000 \
     && echo "$USER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USER \
