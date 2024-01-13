@@ -14,7 +14,7 @@ FROM alpine:latest AS STANDARD
 LABEL MAINTAINER="https://casdoor.org/"
 ARG USER=casdoor
 
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/c \
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
  && apk add --update sudo \
  && apk add curl \
  && RUN apk add ca-certificates && update-ca-certificates
