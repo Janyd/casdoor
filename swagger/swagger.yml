@@ -3549,7 +3549,7 @@ definitions:
       failedSigninLimit:
         type: integer
         format: int64
-      failedSigninfrozenTime:
+      failedSigninFrozenTime:
         type: integer
         format: int64
       forgetUrl:
@@ -4451,7 +4451,7 @@ definitions:
     properties:
       name:
         type: string
-      nameformat:
+      nameFormat:
         type: string
       value:
         type: string
