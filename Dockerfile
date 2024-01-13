@@ -17,7 +17,7 @@ ARG USER=casdoor
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
  && apk add --update sudo \
  && apk add curl \
- && RUN apk add ca-certificates && update-ca-certificates
+ && apk add ca-certificates && update-ca-certificates
 
 RUN adduser -D $USER -u 1000 \
     && echo "$USER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USER \
